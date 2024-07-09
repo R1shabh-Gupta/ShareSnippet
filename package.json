@@ -21,6 +21,7 @@
     "re-resizable": "^6.9.17",
     "react": "^18",
     "react-dom": "^18",
+    "react-simple-code-editor": "^0.14.1",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.4"
