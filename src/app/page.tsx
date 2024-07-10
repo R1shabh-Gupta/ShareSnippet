@@ -9,14 +9,18 @@ import FontSizeInput from "@/components/controls/FontSizeInput";
 import LanguageSelect from "@/components/controls/LanguageSelect";
 import PaddingSlider from "@/components/controls/PaddingSlider";
 import ThemeSelect from "@/components/controls/ThemeSelect";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import WidthMeasurement from "@/components/WidthMeasurement";
 import { fonts, themes } from "@/constant/options";
 import useStore from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { ResetIcon } from "@radix-ui/react-icons";
+import { Resizable } from "re-resizable";
 import { useRef, useState } from "react";
 
 export default function Home() {
-  const [width, setWidth] = useState<string>("auto");
+  const [width, setWidth] = useState<string | number>("auto");
   const [showWidth, setShowWidth] = useState<boolean>(false);
 
   const theme = useStore((state) => state.theme);
@@ -39,16 +43,39 @@ export default function Home() {
         crossOrigin="anonymous"
       />
 
-      <div
-        className={cn(
-          "overflow-hidden mb-2 transition-all ease-out",
-          showBackground ? themes[theme].background : "ring ring-neutral-900"
-        )}
-        style={{ padding }}
-        ref={editorRef}
+      <Resizable
+        enable={{ left: true, right: true }}
+        minWidth={padding * 2 + 400}
+        size={{ width }}
+        onResize={(e, dir, ref) => setWidth(ref.offsetWidth)}
+        onResizeStart={() => setShowWidth(true)}
+        onResizeStop={() => setShowWidth(false)}
       >
-        <CodeEditor />
-      </div>
+        <div
+          className={cn(
+            "overflow-hidden mb-2 transition-all ease-out",
+            showBackground ? themes[theme].background : "ring ring-neutral-900"
+          )}
+          style={{ padding }}
+          ref={editorRef}
+        >
+          <CodeEditor />
+        </div>
+        <WidthMeasurement showWidth={showWidth} width={width} />
+        <div
+          className={cn(
+            "transition-opacity w-fit mx-auto -mt-4",
+            showWidth || width === "auto"
+              ? "invisible opacity-0"
+              : "visible opacity-100"
+          )}
+        >
+          <Button size="sm" onClick={() => setWidth("auto")} variant="ghost">
+            <ResetIcon className="mr-2" />
+            Reset width
+          </Button>
+        </div>
+      </Resizable>
 
       <Card className="fixed bottom-16 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
         <CardContent className="flex flex-wrap gap-6 p-0">
