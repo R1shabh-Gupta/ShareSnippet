@@ -2,6 +2,7 @@
 
 import CodeEditor from "@/components/CodeEditor";
 import ExportOptions from "@/components/controls/ExportOptions";
+import FontSelect from "@/components/controls/FontSelect";
 import LanguageSelect from "@/components/controls/LanguageSelect";
 import ThemeSelect from "@/components/controls/ThemeSelect";
 import { Card, CardContent } from "@/components/ui/card";
@@ -49,6 +50,7 @@ export default function Home() {
         <CardContent className="flex flex-wrap gap-6 p-0">
           <ThemeSelect />
           <LanguageSelect />
+          <FontSelect />
           <div className="w-px bg-neutral-800" />
           <div className="place-self-center">
             <ExportOptions targetRef={editorRef} />
