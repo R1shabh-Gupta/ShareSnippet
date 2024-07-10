@@ -60,6 +60,7 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        logo: ["Tiny5", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
