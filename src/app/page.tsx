@@ -5,6 +5,7 @@ import ExportOptions from "@/components/controls/ExportOptions";
 import FontSelect from "@/components/controls/FontSelect";
 import FontSizeInput from "@/components/controls/FontSizeInput";
 import LanguageSelect from "@/components/controls/LanguageSelect";
+import PaddingSlider from "@/components/controls/PaddingSlider";
 import ThemeSelect from "@/components/controls/ThemeSelect";
 import { Card, CardContent } from "@/components/ui/card";
 import { fonts, themes } from "@/constant/options";
@@ -53,6 +54,7 @@ export default function Home() {
           <LanguageSelect />
           <FontSelect />
           <FontSizeInput />
+          <PaddingSlider />
           <div className="w-px bg-neutral-800" />
           <div className="place-self-center">
             <ExportOptions targetRef={editorRef} />
