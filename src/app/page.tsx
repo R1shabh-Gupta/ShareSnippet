@@ -9,6 +9,7 @@ import FontSizeInput from "@/components/controls/FontSizeInput";
 import LanguageSelect from "@/components/controls/LanguageSelect";
 import PaddingSlider from "@/components/controls/PaddingSlider";
 import ThemeSelect from "@/components/controls/ThemeSelect";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import WidthMeasurement from "@/components/WidthMeasurement";
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <main className="dark min-h-screen flex justify-center items-center bg-neutral-950 text-white">
+      <BackgroundBeams />
       <link
         rel="stylesheet"
         href={themes[theme].theme}
@@ -53,7 +55,7 @@ export default function Home() {
       >
         <div
           className={cn(
-            "overflow-hidden mb-2 transition-all ease-out",
+            "overflow-hidden mb-2 transition-all ease-out -mt-8",
             showBackground ? themes[theme].background : "ring ring-neutral-900"
           )}
           style={{ padding }}
